@@ -17,6 +17,11 @@ angular
     'ngSanitize',
     'ngTouch'
   ]
+  .config ($httpProvider) ->
+    $httpProvider.defaults.headers.common = {}
+    $httpProvider.defaults.headers.post = {}
+    $httpProvider.defaults.headers.put = {}
+    $httpProvider.defaults.headers.patch = {}
   .config ($routeProvider) ->
     $routeProvider
       .when '/',
@@ -27,6 +32,9 @@ angular
         templateUrl: 'views/about.html'
         controller: 'AboutCtrl'
         controllerAs: 'about'
+      .when '/login',
+        templateUrl: 'views/login.html'
+        controller: 'LoginCtrl'
+        controllerAs: 'login'
       .otherwise
         redirectTo: '/'
-
