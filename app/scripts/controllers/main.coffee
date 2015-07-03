@@ -8,10 +8,13 @@
  # Controller of the ziteApp
 ###
 angular.module 'ziteApp'
-  .controller 'MainCtrl', ->
-    @awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
+  .controller 'MainCtrl', ($location, $window, ZiteServer) ->
+    vm = @
+    vm.credential = angular.fromJson($window.sessionStorage.getItem('credential')) || {}
+    $location.path('/login') if !vm.credential.hasOwnProperty("userId")
+
+    ZiteServer.credential = vm.credential
+    ZiteServer.getArticles()
+      .success (data) ->
+        vm.documents = data.documents
     return

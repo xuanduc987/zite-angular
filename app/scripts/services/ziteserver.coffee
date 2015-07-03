@@ -11,6 +11,7 @@ angular.module 'ziteApp'
   .factory 'ZiteServer', ($http) ->
     baseUrl = 'https://api.zite.com/api/v2'
     loginPath = '/account/login'
+    articlesPath = '/news/'
 
     defaultParams =
       appver: '2.0'
@@ -29,9 +30,9 @@ angular.module 'ziteApp'
         data: data
       }
 
-
-    token: null
-    userId: null
+    credential:
+      token: null
+      userId: null
 
     login: (email, password) ->
       params =
@@ -39,3 +40,6 @@ angular.module 'ziteApp'
         password: password
       angular.merge(params, defaultParams)
       formPost(baseUrl + loginPath, params)
+
+    getArticles: (section = "topstories") ->
+      $http.get(baseUrl + articlesPath, { params: angular.merge({ section: section }, defaultParams, @credential) })
