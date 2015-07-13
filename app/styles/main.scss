@@ -134,6 +134,14 @@ body {
     }
   }
 
+  .content_row {
+    min-height: 100px;
+    .image_cover {
+      float: right;
+      margin-left: 10px;
+    }
+  }
+
   .tags {
     display: inline;
     list-style: none;
