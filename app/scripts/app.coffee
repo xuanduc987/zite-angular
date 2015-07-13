@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angular-loading-bar'
   ]
   .config ($httpProvider) ->
     $httpProvider.defaults.headers.common = {}
