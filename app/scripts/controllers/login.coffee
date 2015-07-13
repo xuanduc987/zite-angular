@@ -17,5 +17,6 @@ angular.module 'ziteApp'
         .success (data) ->
           vm.credential = data
           $window.sessionStorage.setItem('credential', angular.toJson(vm.credential))
+          $location.path('/')
         .error (data, status) -> vm.credential = data
     return

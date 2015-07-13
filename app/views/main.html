@@ -1,23 +1,7 @@
 <div class="content">
   <ul class="articles">
     <li ng-repeat="document in main.documents">
-      <div class="article panel panel-default">
-        <div class="panel-heading">
-          <a target="_blank" ng-href="{{ document.url }}">
-            <h2 class="panel-title">{{ document.title }}</h2>
-          </a>
-        </div>
-        <div class="panel-body">
-          <p class="summary">
-            {{ document.summary[0] }}
-          </p>
-          <div class="quotes">
-            <blockquote class="quote" ng-repeat="quote in document.pullquotes">
-              <p>{{ quote }}</p>
-            </blockquote>
-          </div>
-        </div>
-      </div>
+      <article document='document'>
     </li>
   </ul>
 </div>

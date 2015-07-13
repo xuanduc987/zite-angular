@@ -89,3 +89,79 @@ body {
     border-bottom: 0;
   }
 }
+
+.articles {
+  list-style: none;
+  line-height: 1.4285;
+}
+
+.article {
+  font-family: Georgia,serif;
+  font-size: 16px;
+  line-height: 24px;
+
+  border-bottom: 1px solid #ececec;
+  padding: 22px 0 12px;
+
+  a:hover {
+    color: #0077bb;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .article_title {
+    display: block;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 30px;
+    color: #111;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .info_row {
+    font-family: Helvetica, arial, sans-serif;
+    font-size: 13px;
+    height: 30px;
+    color: #7a7a7a;
+
+    a {
+      color: #7a7a7a;
+    }
+  }
+
+  .tags {
+    display: inline;
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    float: right;
+
+    li {
+      float: left;
+    }
+
+    a {
+      color: #8fbac8;
+    }
+
+    .tag {
+      background: #eee;
+      border-radius: 3px 0 0 3px;
+      display: inline-block;
+      height: 16px;
+      line-height: 16px;
+      padding: 0 10px 0 13px;
+      position: relative;
+      margin: 0 10px 10px 0;
+      text-decoration: none;
+    }
+  }
+
+}
+

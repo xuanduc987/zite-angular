@@ -1,0 +1,23 @@
+<div class="article">
+  <div class="title_row">
+    <a class="article_title" ng-href="{{ document.url }}" ng-attr-title="{{ document.title }}">
+      {{ document.title }}
+    </a>
+  </div>
+  <div class="info_row">
+    <a class="article_host" ng-href="{{ document.url }}" ng-attr-title="{{ document.title }}">
+      {{ document.source.name }}
+    </a>
+    <span class="host"></span>
+    <span class="author" ng-if="document.author != null"> · by {{ document.author }}</span>
+    <span class="timestamp"> · {{ document.timestamp | fromNow }}</span>
+    <ul class="tags">
+      <li ng-repeat="topic in document.relatedtopics | limitTo:3">
+      <a href="#" class="tag">{{ topic.name }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="content_row">
+    <p class="summary">{{ document.summary[0] }}</p>
+  </div>
+</div>
