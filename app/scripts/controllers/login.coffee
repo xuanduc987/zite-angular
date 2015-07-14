@@ -8,15 +8,13 @@
  # Controller of the ziteApp
 ###
 angular.module 'ziteApp'
-  .controller 'LoginCtrl', (ZiteServer, $window, $location) ->
+  .controller 'LoginCtrl', (Auth, $window, $location) ->
     vm = @
-    vm.credential = angular.fromJson($window.sessionStorage.getItem('credential')) || {}
+    vm.credential = Auth.credential
+
+    if Auth.is_loggedin()
+      $location.path('/')
 
     vm.login = ->
-      ZiteServer.login(vm.user.email, vm.user.password)
-        .success (data) ->
-          vm.credential = data
-          $window.sessionStorage.setItem('credential', angular.toJson(vm.credential))
-          $location.path('/')
-        .error (data, status) -> vm.credential = data
+      Auth.log_in(vm.user.email, vm.user.password, '/')
     return
