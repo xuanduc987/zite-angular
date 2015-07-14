@@ -135,10 +135,22 @@ body {
   }
 
   .content_row {
-    min-height: 100px;
-    .image_cover {
+    overflow: hidden;
+    margin-top: 10px;
+    min-height: 80px;
+
+    .image_cover_div {
       float: right;
-      margin-left: 10px;
+
+      .image_cover {
+        width: 120px;
+        height: 120px;
+        margin-left: 10px;
+      }
+
+      .full_image_cover {
+        width: 100%;
+      }
     }
   }
 

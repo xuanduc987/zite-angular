@@ -18,10 +18,10 @@
     </ul>
   </div>
   <div class="content_row">
-    <div class="image_cover" ng-if="document.cover_url != null">
-      <img ng-src="document.cover_url" alt="Cover Image" height="100" width="100" />
+    <div class="image_cover_div" ng-if="document.cover_url != null">
+      <img class="{{ document.is_full_pic ? 'full_' : '' }}image_cover" ng-src="{{ document.cover_url }}" alt="Cover Image" />
     </div>
-    <div class="text_content">
+    <div class="text_content" ng-if="!document.is_full_pic">
       <p class="summary">
         {{ document.summary[0] | limitTo:350 }}
         <span ng-if="document.summary[0].length > 350">...</span>
