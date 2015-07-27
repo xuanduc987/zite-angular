@@ -25,7 +25,7 @@ angular
     $httpProvider.defaults.headers.patch = {}
   .config ($routeProvider) ->
     $routeProvider
-      .when '/',
+      .when '/:section?',
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
         controllerAs: 'main'

@@ -13,7 +13,7 @@ angular.module 'ziteApp'
     scope:
       document: '='
       section: '='
-    controller: ($scope, $window) ->
+    controller: ($scope, $window, $location) ->
       for pic in $scope.document.images
         if pic.h == pic.w && pic.h >= 120
           $scope.document.cover_url = pic.url
@@ -26,6 +26,10 @@ angular.module 'ziteApp'
       $scope.visitLink = ->
         LogEvent.markAsRead($scope.section, $scope.document.url)
         $window.open($scope.document.url, '_blank')
+        return true
+
+      $scope.clickTag = (topic) ->
+        $location.path('/' + topic.id)
         return true
 
 

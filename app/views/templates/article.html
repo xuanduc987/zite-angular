@@ -13,7 +13,7 @@
     <span class="timestamp"> · {{ document.timestamp | fromNow }}</span>
     <ul class="tags">
       <li ng-repeat="topic in document.relatedtopics | limitTo:2">
-      <a href="#" class="tag">{{ topic.name }}</a>
+      <a href ng-click="clickTag(topic)" class="tag">{{ topic.name }}</a>
       </li>
     </ul>
   </div>

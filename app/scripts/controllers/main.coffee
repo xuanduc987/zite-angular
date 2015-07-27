@@ -8,11 +8,11 @@
  # Controller of the ziteApp
 ###
 angular.module 'ziteApp'
-  .controller 'MainCtrl', ($location, $window, Auth, News) ->
+  .controller 'MainCtrl', ($location, $window, $routeParams, Auth, News) ->
     vm = @
     Auth.is_loggedin()
     vm.credential = Auth.credential
-    vm.section = 'topstories'
+    vm.section = $routeParams.section || 'topstories'
 
     News.fetch(vm.section).then (data) ->
         vm.documents = data
