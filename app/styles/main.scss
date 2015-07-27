@@ -123,6 +123,17 @@ body {
     text-overflow: ellipsis;
   }
 
+  .article_title_read {
+    display: block;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 30px;
+    color: #7a7a7a;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   .info_row {
     font-family: Helvetica, arial, sans-serif;
     font-size: 13px;

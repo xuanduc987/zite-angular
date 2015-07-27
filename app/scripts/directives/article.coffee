@@ -7,11 +7,12 @@
  # # article
 ###
 angular.module 'ziteApp'
-  .directive 'article', ->
+  .directive 'article', (LogEvent) ->
     restrict: 'EA'
     templateUrl: 'views/templates/article.html'
     scope:
       document: '='
+      section: '='
     controller: ($scope, $window) ->
       for pic in $scope.document.images
         if pic.h == pic.w && pic.h >= 120
@@ -23,6 +24,8 @@ angular.module 'ziteApp'
           break
 
       $scope.visitLink = ->
+        LogEvent.markAsRead($scope.section, $scope.document.url)
         $window.open($scope.document.url, '_blank')
+        return true
 
 

@@ -10,8 +10,9 @@
 angular.module 'ziteApp'
   .factory 'ZiteServer', ($http) ->
     baseUrl = 'https://api.zite.com/api/v2'
-    loginPath = '/account/login'
+    loginPath = '/account/login/'
     articlesPath = '/news/'
+    logEventPath = '/log/event/'
 
     defaultParams =
       appver: '2.0'
@@ -22,12 +23,7 @@ angular.module 'ziteApp'
         method: 'POST'
         url: url
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        transformRequest: (obj) ->
-          str = []
-          for k, v of obj
-            str.push(encodeURIComponent(k) + "=" + encodeURIComponent(v))
-          str.join("&")
-        data: data
+        params: data
       }
 
     credential:
@@ -43,3 +39,14 @@ angular.module 'ziteApp'
 
     getArticles: (section = "topstories") ->
       $http.get(baseUrl + articlesPath, { params: angular.merge({ section: section }, defaultParams, @credential) })
+
+    markAsRead: (section, url) ->
+      params =
+        section: section
+        url: url
+        event: 'ArticleView'
+        orientation: 'portrait'
+        source: 'section'
+        webmode: false
+      angular.merge(params, defaultParams)
+      formPost(baseUrl + logEventPath, params)

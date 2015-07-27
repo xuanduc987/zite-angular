@@ -1,6 +1,6 @@
 <div class="article">
   <div class="title_row">
-    <a class="article_title" href ng-click="visitLink()" ng-attr-title="{{ document.title }}">
+    <a class="article_title{{ document.isread > 0 ? '_read' : '' }}" href ng-click="visitLink()" ng-attr-title="{{ document.title }}">
       {{ document.title }}
     </a>
   </div>

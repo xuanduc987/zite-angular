@@ -12,7 +12,8 @@ angular.module 'ziteApp'
     vm = @
     Auth.is_loggedin()
     vm.credential = Auth.credential
+    vm.section = 'topstories'
 
-    News.fetch().then (data) ->
+    News.fetch(vm.section).then (data) ->
         vm.documents = data
     return
