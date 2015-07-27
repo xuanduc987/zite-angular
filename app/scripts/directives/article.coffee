@@ -29,7 +29,7 @@ angular.module 'ziteApp'
         return true
 
       $scope.clickTag = (topic) ->
-        $location.path('/' + topic.id)
+        $location.path('/section/' + topic.id)
         return true
 
 
