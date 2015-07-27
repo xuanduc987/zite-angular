@@ -23,12 +23,15 @@ angular.module 'ziteApp'
         method: 'POST'
         url: url
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        params: data
+        transformRequest: (obj) ->
+          str = []
+          for k, v of obj
+            str.push(encodeURIComponent(k) + "=" + encodeURIComponent(v))
+          str.join("&")
+        data: data
       }
 
-    credential:
-      token: null
-      userId: null
+    credential: {}
 
     login: (email, password) ->
       params =
@@ -48,5 +51,5 @@ angular.module 'ziteApp'
         orientation: 'portrait'
         source: 'section'
         webmode: false
-      angular.merge(params, defaultParams)
+      angular.merge(params, defaultParams, @credential)
       formPost(baseUrl + logEventPath, params)

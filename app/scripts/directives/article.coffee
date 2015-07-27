@@ -24,6 +24,7 @@ angular.module 'ziteApp'
           break
 
       $scope.visitLink = ->
+        $scope.document.isread = 1
         LogEvent.markAsRead($scope.section, $scope.document.url)
         $window.open($scope.document.url, '_blank')
         return true
