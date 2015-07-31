@@ -8,8 +8,8 @@
  # Service in the ziteApp.
 ###
 angular.module 'ziteApp'
-  .service 'Auth', ($location, $window, ZiteServer) ->
-    @credential = angular.fromJson($window.sessionStorage.getItem('credential')) || {}
+  .service 'Auth', ($location, $cookies, ZiteServer) ->
+    @credential = angular.fromJson($cookies.get('credential')) || {}
     auth = @
 
     @is_loggedin = ->
@@ -21,7 +21,7 @@ angular.module 'ziteApp'
       ZiteServer.login(email, password)
         .success (data) ->
           auth.credential = data
-          $window.sessionStorage.setItem('credential', angular.toJson(auth.credential))
+          $cookies.put('credential', angular.toJson(auth.credential))
           $location.path(target)
         .error (data, status) ->
           auth.credential = data
