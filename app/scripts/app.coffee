@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'angularytics'
   ]
   .config ($httpProvider) ->
     $httpProvider.defaults.headers.common = {}
@@ -43,3 +44,7 @@ angular
         controllerAs: 'login'
       .otherwise
         redirectTo: '/'
+  .config (AngularyticsProvider) ->
+    AngularyticsProvider.setEventHandlers ['GoogleUniversal']
+  .run (Angularytics) ->
+    Angularytics.init()
